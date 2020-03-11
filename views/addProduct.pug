@@ -1,0 +1,29 @@
+extends layout
+
+block content 
+  section.container
+    h1.header= title
+    article.item
+      form.form(action="/add" method="post")
+        fieldset
+          div
+            input(type="text" name="productType" placeholder="Tipo de producto" required)
+          div
+            input(type="text" name="name" placeholder="Nombre del producto" required)
+          div
+            input(type="text" name="description" placeholder="Descripción" required)
+          div
+            input(type="text" name="price" placeholder="Precio" required)
+          div
+            input(type="text" name="material" placeholder="Material con que está hecho" required)
+          div
+            input(type="text" name="color" placeholder="Color" required)
+          div
+            input(type="text" name="model" placeholder="Modelo del producto" required)
+          div
+            input(type="text" name="category" placeholder="Categoría" required)
+          div
+            input(type="text" name="image" placeholder="URL de la imagen" required)
+          div
+            input.button.add(type="submit",value="Agregar")
+    a.button.show(href="/products") Inicio

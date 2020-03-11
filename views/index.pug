@@ -1,0 +1,35 @@
+extends layout.pug
+
+block content
+  section.container
+    h1.header= title
+    article.item
+      div
+        a.button.add(href="/add") Agregar
+      if(data.length)
+        table.table
+          tr
+            th Tipo
+            th Nombre
+            th color
+            th precio
+            th
+            th
+          each product in data
+            tr
+              td #{product.productType}
+              td #{product.name}
+              td #{product.color}
+              td $#{product.price}.00 MXN
+              td
+                a.button.edit(href="/edit/"+product._id) Editar
+              td
+                form(action="/delete/"+ product._id+"?_method=DELETE", method="post")
+                  input.button.delete(type="submit", value="Eliminar", onclick="eliminar(this)")
+          script.
+            function eliminar(input){
+              let deleteOK = confirm('¿Estas seguro de eliminar el registro?')
+              return deleteOK ? input.parentNode.submit() : false 
+            }
+      else
+        div.error No tienes productos que mostrar
