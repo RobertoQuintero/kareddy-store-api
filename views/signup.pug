@@ -1,0 +1,21 @@
+extends layout.pug
+
+block content
+	.container
+		h3=error
+		h1.header= title
+		section.item
+			form.form(method="post", action="/signup")
+				fieldset
+					div
+						input#username(type="text", name="username" placeholder="usuario", required value=username)
+					div
+						input#email(type="email", name="email", placeholder="correo electónico" required value=email)
+					div
+						input#password(type="password", name="password", placeholder="contraseña" required)
+					div
+						input#password_conf(type="password", name="password_conf", placeholder=" confirmar contraseña" required)
+					article.last-flex
+						input.button.show(type="submit", value="Registrarse", style='margin-right:.3em;', onclick='match(this)') 
+						a.button.show(href="/") Login
+	

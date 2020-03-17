@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 
-mongoose.connect('mongodb://localhost/store-api',{
+mongoose.connect(process.env.MONGO_DB || 'mongodb://localhost/store-api',{
   useCreateIndex: true,
   useNewUrlParser: true,
   useFindAndModify: false,

@@ -1,4 +1,5 @@
-const Product = require('../models/productModel')
+const Product = require('../models/productModel'),
+  moment = require('moment')
 
 module.exports = {
   getAllProducts(req,res){
@@ -18,12 +19,15 @@ module.exports = {
       .find()
       .exec()
       .then(result=>{
-        res.status(200).json({result})
+        res.status(200).json({products: result})
       })
       .catch(error=>console.log(error))
   },
    save(req,res){
     const product = new Product(req.body)
+    product.id = new Date().getTime()
+    product.updateDate = moment().format('MMMM Do YYYY, h:mm:ss a')
+    product.fullDate = moment().format('MMMM Do YYYY, h:mm:ss a')
     product
       .save()
       .then(result =>{
@@ -56,7 +60,14 @@ module.exports = {
   },
   update(req,res){
     let id = req.params.id
-    Product.findByIdAndUpdate(id,req.body)
+    let update ={}
+    let requestBody = req.body
+    for(let item in requestBody){
+      update[item] = requestBody[item]
+    }
+    update.updateDate = moment().format('MMMM Do YYYY, h:mm:ss a')
+    console.log(update)
+    Product.findByIdAndUpdate(id,update)
       .exec()
       .then(result=>{
         console.log(result)

@@ -1,0 +1,16 @@
+extends layout.pug
+
+block content
+	.container
+		h3=error
+		h1.header= title
+		section.item
+			form.form(method="post", action="/login")
+				fieldset
+					div
+						input#password(type="email", name="email", placeholder="correo electónico" required)
+					div
+						input#password(type="password", name="password", placeholder="contraseña" required)
+					article.last-flex
+						input.button.show(type="submit" value="Login" style='margin-right:.3em;') 
+						a.button.show(href="/signup") Crear cuenta

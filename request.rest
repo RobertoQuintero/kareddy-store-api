@@ -1,0 +1,1 @@
+DELETE http://localhost:3000/users/5e70477cd0a84d14b472e5f0

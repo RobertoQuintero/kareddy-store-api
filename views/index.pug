@@ -4,8 +4,9 @@ block content
   section.container
     h1.header= title
     article.item
-      div
+      div.buttons-index
         a.button.add(href="/add") Agregar
+        a.button.show.logout(href="/logout") Logout
       if(data.length)
         table.table
           tr

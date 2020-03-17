@@ -120,3 +120,18 @@ input[type="text"] {
 .table tr:nth-child(even) { background-color: #DDD; }
 
 .table tr:nth-child(odd):not(:first-child) { background-color: #EEE; }
+
+.last-flex{
+	display: flex;
+	justify-content: center;
+}
+
+.buttons-index{
+	position: relative;
+}
+.logout{
+	position: absolute;
+	right: 0;
+	transform: translateY(-50%);
+	top: 50%;
+}

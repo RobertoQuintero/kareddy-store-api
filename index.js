@@ -1,11 +1,14 @@
 const express = require('express'),
     app = express(),
     override = require('method-override')('_method'),
+    cookieParser = require('cookie-parser'),
     port = process.env.PORT || 3000,
     publicDir = express.static(`${__dirname}/public`),
     viewDir = `${__dirname}/views`,
-    productRoutes = require('./routes/productRoutes')
+    productRoutes = require('./routes/productRoutes'),
+    usersRoutes = require('./routes/usersRoutes')
 
+require('dotenv').config()
 require('./database')
 // SETTINGS
 app
@@ -17,6 +20,7 @@ app
 app
   .use(express.json())
   .use(express.urlencoded({extended: false}))
+  .use(cookieParser())
   .use(publicDir)
   .use(override)
   
@@ -33,6 +37,8 @@ app
   // ROUTES
 app
   .use(productRoutes)
+  .use(usersRoutes)
+
 
 // SERVER
 
